@@ -94,7 +94,7 @@ $ ->
         
         ws.onclose = (event) -> 
             connectSocket()
-            alert "connection closed"
+            console.log("connection closed. reconnect it")
         
     
     connectSocket()
