@@ -66,7 +66,7 @@ object Application extends Controller
             
       val in = Iteratee.foreach[String] { msg => 
       
-        val data = msg.split(",")
+//        val data = msg.split(",")
       
         println(msg)
       
