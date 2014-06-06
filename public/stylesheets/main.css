@@ -1,0 +1,87 @@
+body{
+    text-align: center;
+    background-image: url("../images/kuros.jpg");
+}
+
+#space{
+    margin-bottom: 30px;
+}
+
+.top{
+    font-size: 50px;
+    margin-top: 40px;
+    font-family: 'Comic Sans MS';
+}
+#header{
+    font-size: 30px;
+    margin-top: 50px; 
+    margin-bottom: 7px; 
+    height : 225px;
+    width: 1125px;
+    color : white;
+    font-family: ;
+}
+
+#content{
+    font-size: 20px;
+    width: 1000px;
+    color: white;
+    text-shadow: 2px 2px 5px black;
+    padding: 50px;
+    margin: 0px auto;
+    height: 700px;
+    background-image: url("../images/board.jpg");
+    background-size: 1000px;
+    background-repeat: no-repeat;
+    background-position: center;
+}   
+
+#login{
+    padding: 40px;    
+}
+
+.btn{
+    color: white;
+    margin-left: 40px;
+    background-color: green;
+}
+
+.labeling{
+    
+}
+
+.questions{
+    margin: 50px;
+}
+
+#first-Q{
+    width: 800px; 
+    margin-bottom: 40px;
+}
+
+#second-Q{
+    margin-bottom: 40px;
+}
+
+#room{
+    margin: 0px auto;
+    width: 500px;
+}
+
+#submit{
+    color: white;
+    margin: 0px auto;
+}
+ 
+#topchara{
+    position: relative;
+    top: -20px;
+}
+
+.chara{
+    margin-top: 30px;
+}
+
+#gotIt{
+    margin-top: 30px;
+}
