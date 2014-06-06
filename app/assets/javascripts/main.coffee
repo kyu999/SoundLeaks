@@ -90,7 +90,7 @@ $ ->
                 
         ws.onerror = (event) -> 
             
-            alert "something wrong happened"    
+            console.log("something wrong happened")
         
         ws.onclose = (event) -> 
             connectSocket()
