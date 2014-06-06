@@ -38,61 +38,66 @@ $ ->
 # WebSocket define -------------------------------------------------
     
     ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
-#    ws = new WebSocket("ws://localhost:9000/ws")
     
-    ws.onopen = (event) -> 
-        
-        console.log("connected again after login")
-        
-    ws.onmessage = (event) -> 
+    connectSocket = ->    
     
-        data = event.data.split(",")
+#    ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
+        ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
+    
+        ws.onopen = (event) -> 
         
-        infotype = data[0]
+            console.log("connected again after login")
         
-        if infotype == "issue" 
+        ws.onmessage = (event) -> 
+    
+            data = event.data.split(",")
+        
+            infotype = data[0]
+        
+            if infotype == "issue" 
               
-            if loginStatus == "Police"
+                if loginStatus == "Police"
                     
-                cleanPage()
-                $.ionSound.play("sad")
-                makePoliceAfterIssuePage(data[1], data[2])
-                changeOpacity("#gotIt")
-                $("#gotIt").on("click", (event) -> 
+                    cleanPage()
+                    $.ionSound.play("sad")
+                    makePoliceAfterIssuePage(data[1], data[2])
+                    changeOpacity("#gotIt")
+                    $("#gotIt").on("click", (event) -> 
                                             $.ionSound.stop("sad")
                                             ws.send("gotIt") )
                                 
+                else 
+                    console.log("weired")
+            
+            else if infotype == "gotIt" 
+            
+                $.ionSound.play("button")
+            
+                if loginStatus == "Student"
+                    cleanPage()
+                    $("#content").append(studentAfterGotItPage)
+                
+                else if loginStatus == "Police"
+                    cleanPage()
+                    $.ionSound.stop("sad")
+                    makePolicePage()
+                
+                else 
+                    console.log("weired")
+            
             else 
-                console.log("weired")
-            
-        else if infotype == "gotIt" 
-            
-            $.ionSound.play("button")
-            
-            if loginStatus == "Student"
-                cleanPage()
-                $("#content").append(studentAfterGotItPage)
+                console.log("weired message came in")
                 
-            else if loginStatus == "Police"
-                cleanPage()
-                $.ionSound.stop("sad")
-                makePolicePage()
-                
-            else 
-                console.log("weired")
+        ws.onerror = (event) -> 
             
-        else 
-            console.log("weired message came in")
-                
-    ws.onerror = (event) -> 
+            alert "something wrong happened"    
         
-        alert "something wrong happened"    
-        
-    ws.onclose = (event) -> 
-        ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
-        alert "connection closed"
+        ws.onclose = (event) -> 
+            connectSocket()
+            alert "connection closed"
         
     
+    connectSocket()
 # extract input value when login ----------------------------------------------------
 
 #    place = ""
@@ -193,8 +198,8 @@ $ ->
                      ")
     
     
-#    loginWs = new WebSocket("ws://localhost:9000/login")    
-    loginWs = new WebSocket("ws://soundleaks.herokuapp.com/login")
+    loginWs = new WebSocket("ws://soundleaks.herokuapp.com/login")    
+#    loginWs = new WebSocket("ws://soundleaks.herokuapp.com/login")
 
 
     
