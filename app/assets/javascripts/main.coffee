@@ -37,8 +37,8 @@ $ ->
             
 # WebSocket define -------------------------------------------------
     
-#    ws = new WebSocket("ws://soundleaks.elasticbeanstalk.com/ws")
-    ws = new WebSocket("ws://localhost:9000/ws")
+    ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
+#    ws = new WebSocket("ws://localhost:9000/ws")
     
     ws.onopen = (event) -> 
         
@@ -197,8 +197,8 @@ $ ->
                      ")
     
     
-    loginWs = new WebSocket("ws://localhost:9000/login")    
-#    loginWs = new WebSocket("ws://soundleaks.elasticbeanstalk.com/login")
+#    loginWs = new WebSocket("ws://localhost:9000/login")    
+    loginWs = new WebSocket("ws://soundleaks.herokuapp.com/login")
 
 
     
