@@ -51,15 +51,8 @@ $ ->
         infotype = data[0]
         
         if infotype == "issue" 
-            
-            
-            if loginStatus == "Student"
-                
-                cleanPage()
-                $.ionSound.play("button")
-                $("#content").append(studentAfterIssuePage)
-                
-            else if loginStatus == "Police"
+              
+            if loginStatus == "Police"
                     
                 cleanPage()
                 $.ionSound.play("sad")
@@ -96,7 +89,7 @@ $ ->
         alert "something wrong happened"    
         
     ws.onclose = (event) -> 
-        
+        ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
         alert "connection closed"
         
     
@@ -117,6 +110,9 @@ $ ->
             console.log("shouldn't send only that word")
         
         else
+            cleanPage()
+            $.ionSound.play("button")
+            $("#content").append(studentAfterIssuePage)
             console.log("send room or descriptive data to server")
             ws.send("issue," + currentBuilding + "," + room)           
     
