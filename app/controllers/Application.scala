@@ -8,9 +8,6 @@ import play.api.libs.concurrent.Execution.Implicits.defaultContext
     
 import play.api.data.Form
 import play.api.data.Forms._
-        
-//import play.api.Play.current
-//import com.typesafe.plugin._
     
 import org.apache.commons.mail._
     
