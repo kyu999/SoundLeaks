@@ -3,12 +3,6 @@ $ ->
     
     loginStatus = ""   
     
-    issueHappen = 0
-    
-    issues = []
-    numOfIssues = 0
-    
-    
     
 # page move by removing and adding html elements --------------------
 
@@ -37,12 +31,12 @@ $ ->
             
 # WebSocket define -------------------------------------------------
     
-    ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
+    ws = new WebSocket("ws://localhost:9000/ws")
     
     connectSocket = ->    
     
 #    ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
-        ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
+        ws = new WebSocket("ws://localhost:9000/ws")
     
         ws.onopen = (event) -> 
         
@@ -100,8 +94,6 @@ $ ->
     connectSocket()
 # extract input value when login ----------------------------------------------------
 
-#    place = ""
-
 
     currentBuilding = ""
     
@@ -137,11 +129,6 @@ $ ->
                                 )
                         
             
-    
-
-        
-# small funcs around login define ------------------------------------------
-
     appendEver = false
 
     appendInvalid = -> 
@@ -198,10 +185,8 @@ $ ->
                      ")
     
     
-    loginWs = new WebSocket("ws://soundleaks.herokuapp.com/login")    
+    loginWs = new WebSocket("ws://localhost:9000/login")    
 #    loginWs = new WebSocket("ws://soundleaks.herokuapp.com/login")
-
-
     
     afterLogin = (who) -> 
             cleanPage()

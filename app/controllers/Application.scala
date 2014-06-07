@@ -6,20 +6,17 @@ import play.api.mvc._
 import play.api.libs.iteratee._
 import play.api.libs.concurrent.Execution.Implicits.defaultContext  
     
-import play.api.data.Form
-import play.api.data.Forms._
-    
 import org.apache.commons.mail._
     
 object Application extends Controller
 {
-    
+ 
+
   def index = Action { implicit request =>
-      
-   Ok( views.html.index() )
+    Ok( views.html.index() )
   }
 
-
+ 
   def login = WebSocket.using[String] { request => 
       
       val (loginOut, loginChannel) = Concurrent.broadcast[String]
@@ -39,13 +36,13 @@ object Application extends Controller
       (in, loginOut)
       
   }
-          
+/*          
   val sendMail = { (message: String) => 
         val mail = new SimpleEmail;
         mail.setHostName("smtp.googlemail.com")
         mail.setSmtpPort(465)
         mail.setAuthenticator(
-            new DefaultAuthenticator("soundleaksAIU@gmail.com", "cannotsleep119"))
+            new DefaultAuthenticator("soundleaksAIU@gmail.com", "password"))
         mail.setSSLOnConnect(true)
         mail.setFrom("soundleaksAIU@gmail.com")
         mail.setSubject("Issue Happened!!")
@@ -53,6 +50,7 @@ object Application extends Controller
         mail.setMsg(message)  
         mail.send() 
     }
+*/
 
     
   //broadcastの場合、外で(out,channel)を定義し、unicastの場合中でrequestごとに定義する
@@ -71,6 +69,10 @@ object Application extends Controller
 
 //        if(data.head == "issue") 
 //            sendMail("Issue happened at " + data(1) + " description : " + data(2))
+
+        println(msg)
+      
+        channel push(msg)  
                         
         }.map{ _ => println("closed") } //when connection close
 
