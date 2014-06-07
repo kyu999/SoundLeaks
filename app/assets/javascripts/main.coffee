@@ -192,9 +192,9 @@ $ ->
             cleanPage()
             loginWs.close(1000)
             if who == "Student" 
-                makeStudentPage(who)
+                makeStudentPage()
             else if who == "Police" 
-                makePolicePage(who)
+                makePolicePage()
             else alert "you are not student nor police"
 
 # WebSocket for login define ------------------------------------------
