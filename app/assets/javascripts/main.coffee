@@ -31,12 +31,13 @@ $ ->
             
 # WebSocket define -------------------------------------------------
     
-    ws = new WebSocket("ws://localhost:9000/ws")
+#    ws = new WebSocket("ws://localhost:9000/ws")
+    ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
     
     connectSocket = ->    
     
-#    ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
-        ws = new WebSocket("ws://localhost:9000/ws")
+    ws = new WebSocket("ws://soundleaks.herokuapp.com/ws")
+#        ws = new WebSocket("ws://localhost:9000/ws")
     
         ws.onopen = (event) -> 
         
@@ -125,7 +126,7 @@ $ ->
                                           if currentBuilding != ""
                                                 $("#" + currentBuilding).css("background-color", "green")
                                           currentBuilding = building
-                                          $(this).css("background-color", "teal")
+                                          $(this).css("background-color", "#c9171e")
                                 )
                         
             
@@ -185,8 +186,8 @@ $ ->
                      ")
     
     
-    loginWs = new WebSocket("ws://localhost:9000/login")    
-#    loginWs = new WebSocket("ws://soundleaks.herokuapp.com/login")
+#    loginWs = new WebSocket("ws://localhost:9000/login")    
+    loginWs = new WebSocket("ws://soundleaks.herokuapp.com/login")
     
     afterLogin = (who) -> 
             cleanPage()
